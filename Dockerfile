@@ -9,7 +9,6 @@ WORKDIR /src
 
 COPY technicaltest.csproj technicaltest/technicaltest.csproj
 
-//Proto CLIENT di tambahkan manual
 
 COPY Protos/Product.proto technicaltest/Protos/Product.proto
 
