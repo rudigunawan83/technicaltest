@@ -1,0 +1,40 @@
+syntax = "proto3";
+option csharp_namespace = "technicaltest.Protos";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+
+message ProductModel {
+	int32 Id = 1 [json_name="Id"];
+	google.protobuf.StringValue Name = 2 [json_name="Name"];
+	google.protobuf.StringValue Description = 3 [json_name="Description"];
+	float Price = 4 [json_name="Price"];
+	google.protobuf.StringValue CreatedAt = 5 [json_name="CreatedAt"];
+}
+
+message resProductAll {
+    repeated ProductModel list_product = 1;
+}
+
+message ProductEmpty {
+}
+
+message resProductMessage {
+    string message = 1;
+}
+
+service ProductGrpcService {
+	rpc Add(ProductModel) returns (resProductMessage){
+	  option(google.api.http) = {
+	      post: "/v1/product",
+	      body:"*"
+	  };
+	}
+
+	rpc GetAll(ProductEmpty) returns (resProductAll){
+	  option(google.api.http) = {
+	      get: "/v1/product"
+	  };
+	}
+}
