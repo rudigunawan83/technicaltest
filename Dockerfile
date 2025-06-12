@@ -10,8 +10,6 @@ WORKDIR /src
 COPY technicaltest.csproj technicaltest/technicaltest.csproj
 
 
-COPY Protos/Product.proto technicaltest/Protos/Product.proto
-
 
 COPY google/api/annotations.proto technicaltest/google/api/annotations.proto
 COPY google/api/http.proto technicaltest/google/api/http.proto
